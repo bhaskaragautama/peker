@@ -6,18 +6,27 @@
     <title>Kresna Setiana</title>
     <link rel="stylesheet" href="css/output.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body >
     <div class="h-screen w-full absolute">
         <img src="img/header-bg-1.jpg" class="object-cover h-full w-full slideshow slide-1">
         <img src="img/header-bg-2.jpg" class="object-cover h-full w-full slideshow slide-2 hidden">
     </div>
-    <nav id="main-nav" class="fixed z-50 top-0 lg:p-3 p-0 w-full font-semibold transition duration-300">
-        <div id="mobile-nav" class="lg:hidden w-full p-3 bg-gray-900 text-white text-center"><a href="#" id="mobile-menu">Menu</a></div>
+    <nav id="main-nav" class="fixed z-50 top-0 lg:p-3 p-0 w-full font-bold transition duration-300">
+        <div id="mobile-nav" class="lg:hidden flex justify-center w-full p-3 bg-gray-900 text-white"><a href="#" id="mobile-menu"><i data-feather="menu"></i></a></div>
         <ul id="mobile-menu-item" class="lg:flex hidden lg:visible w-full mx-auto lg:flex-row flex-col lg:justify-evenly text-center items-center">
             <li class="lg:p-0 p-2 lg:bg-transparent bg-white lg:w-auto w-full"><a href="#" class="nav-item">Tentang Kami</a></li>
-            <li class="lg:p-0 p-2 lg:bg-transparent bg-white lg:w-auto w-full"><a href="#" class="nav-item">Karya</a></li>
-            <li><img src="img/logo-b.png" class="h-8 nav-item lg:block hidden"></li>
+            <li class="lg:p-0 p-2 lg:bg-transparent bg-white lg:w-auto w-full">
+                <a href="#" class="nav-item">Karya</a>
+                <ul class="absolute text-left bg-white rounded mt-2 shadow">
+                    <li class="py-2 px-4"><a href="#">First</a></li>
+                    <li class="py-2 px-4"><a href="">Second</a></li>
+                </ul>
+            </li>
+            <!-- <li><img src="img/logo-b.png" class="h-8 nav-item lg:block hidden"></li> -->
+            <li><i data-feather="camera" class="text-black nav-item"></i></li>
             <li class="lg:p-0 p-2 lg:bg-transparent bg-white lg:w-auto w-full"><a href="#" class="nav-item">Info</a></li>
             <li class="lg:p-0 p-2 lg:bg-transparent bg-white lg:w-auto w-full"><a href="#" class="nav-item">Kontak</a></li>
         </ul>
@@ -27,7 +36,7 @@
     </div> -->
     <div class="h-screen relative flex items-center justify-center overflow-x-hidden">
         <div class="absolute text-center movable" id="kresna">
-            <h1 class="xl:text-8xl lg:text-7xl md:text-6xl text-5xl font-bold xl:mr-32 lg:mr-28 md:mr-20 mr-14 xl:mb-24 lg:mb-20 md:mb-16 mb-14" data-aos="fade-up">Kresna</h1>
+            <h1 class="xl:text-8xl lg:text-7xl md:text-6xl text-5xl font-bold xl:mr-32 lg:mr-28 md:mr-20 mr-14 xl:mb-24 lg:mb-20 md:mb-16 mb-14">Kresna</h1>
         </div>
         <div class="absolute text-center movable" id="setiana">
             <h1 class="xl:text-8xl lg:text-7xl md:text-6xl text-5xl font-bold xl:ml-32 lg:ml-28 md:ml-20 ml-14 xl:mt-24 lg:mt-20 md:mt-16 mt-14">Setiana</h1>
@@ -106,7 +115,9 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/on.scroll.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        feather.replace();
         $(document).ready(function () {
             let slide = 1;
             let slideNext;
@@ -132,10 +143,12 @@
                 moveMe('#setiana', 'bottom', 0.5, scrollVal);
                 hideMe('#setiana', 1, scrollVal);
                 if(!$('#mobile-nav').is(':visible')) {
-                    if(scrollVal >= 400) {
+                    if(scrollVal >= 700) {
+                        $('#main-nav').removeClass('absolute').addClass('fixed');
                         $('#main-nav').addClass('bg-gray-900');
                         $('.nav-item').addClass('invert');
                     } else {
+                        $('#main-nav').removeClass('fixed').addClass('absolute');
                         $('#main-nav').removeClass('bg-gray-900');
                         $('.nav-item').removeClass('invert');
                     }
