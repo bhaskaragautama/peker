@@ -21,3 +21,11 @@
     border: 0px none #ffffff;
 }
 /* ===== Scrollbar CSS ===== */
+
+.dropdown-list {
+    display: none;
+}
+
+.dropdown-opened {
+    rotate: 180deg;
+}
